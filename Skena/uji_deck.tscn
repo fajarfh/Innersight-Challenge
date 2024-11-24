@@ -1,0 +1,109 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv1y5c3jmvja0"]
+
+[ext_resource type="Script" path="res://Skrip/uji_deck.gd" id="1_sqjh8"]
+[ext_resource type="Texture2D" uid="uid://b0ccovlupak32" path="res://Aset/Grafis/tile_0031.png" id="1_wf88q"]
+[ext_resource type="PackedScene" uid="uid://btm0w4g42nh4t" path="res://Skena/UI/ui_tombol.tscn" id="3_tisck"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dn8af"]
+
+[node name="Uji Deck" type="Node2D" node_paths=PackedStringArray("tombol_buka", "tombol_tutup", "area_deck")]
+script = ExtResource("1_sqjh8")
+tombol_buka = NodePath("UI/Tata UI/Marjin Isi UI/VBoxContainer/PanelContainer/Tombol Buka")
+tombol_tutup = NodePath("UI/Tata UI/Marjin Isi UI/VBoxContainer/PanelContainer/Tombol Tutup")
+area_deck = NodePath("Tata Isi/Marjin Isi")
+
+[node name="Tata Isi" type="Control" parent="." groups=["lapis_kartu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="Latar" type="TextureRect" parent="Tata Isi"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wf88q")
+stretch_mode = 1
+
+[node name="Desaturasi" type="ColorRect" parent="Tata Isi/Latar"]
+modulate = Color(0.282353, 0.635294, 0, 0.286275)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Marjin Isi" type="MarginContainer" parent="Tata Isi"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Tata UI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Marjin Isi UI" type="MarginContainer" parent="UI/Tata UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 130
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tata UI/Marjin Isi UI"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dn8af")
+
+[node name="Tombol Buka" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer/PanelContainer" instance=ExtResource("3_tisck")]
+layout_mode = 2
+text = "BUKA DECK"
+
+[node name="Tombol Tutup" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer/PanelContainer" instance=ExtResource("3_tisck")]
+visible = false
+layout_mode = 2
+text = "TUTUP DECK"
+
+[node name="Tombol Kembali" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer" instance=ExtResource("3_tisck")]
+layout_mode = 2
+text = "KEMBALI"
+
+[connection signal="button_up" from="UI/Tata UI/Marjin Isi UI/VBoxContainer/PanelContainer/Tombol Buka" to="." method="_on_tombol_buka_button_up"]
+[connection signal="button_up" from="UI/Tata UI/Marjin Isi UI/VBoxContainer/PanelContainer/Tombol Tutup" to="." method="_on_tombol_tutup_button_up"]
+[connection signal="button_up" from="UI/Tata UI/Marjin Isi UI/VBoxContainer/Tombol Kembali" to="." method="_on_tombol_kembali_button_up"]

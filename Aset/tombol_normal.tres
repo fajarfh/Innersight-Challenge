@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cxqcvnwxmav3l"]
+
+[ext_resource type="Texture2D" uid="uid://qjwm8380s10x" path="res://Aset/Grafis/blueSheet.png" id="1_7ygsy"]
+
+[resource]
+texture = ExtResource("1_7ygsy")
+texture_margin_left = 6.0
+texture_margin_top = 4.0
+texture_margin_right = 6.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(0, 0, 190, 49)

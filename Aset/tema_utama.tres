@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dksjdbgflxms0"]
+
+[ext_resource type="FontFile" uid="uid://bybau2n3qm6qa" path="res://Aset/Font/Kenney Future Square.ttf" id="1_8tr60"]
+[ext_resource type="StyleBox" uid="uid://eln5mgsta5ca" path="res://Aset/tombol_disabled.tres" id="2_oelge"]
+[ext_resource type="StyleBox" uid="uid://bvne7x43x0mmr" path="res://Aset/tombol_hover.tres" id="3_1twip"]
+[ext_resource type="StyleBox" uid="uid://cxqcvnwxmav3l" path="res://Aset/tombol_normal.tres" id="4_4j387"]
+[ext_resource type="StyleBox" uid="uid://cv56v4dicw0ut" path="res://Aset/tombol_pressed.tres" id="5_7wj3s"]
+
+[resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 0.827451)
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/font_sizes/font_size = 12
+Label/fonts/font = ExtResource("1_8tr60")
+RichTextLabel/colors/default_color = Color(0.214135, 0.316531, 0.448734, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.577008, 0.577008, 0.577008, 0.941176)
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/font_sizes/normal_font_size = 12
+RichTextLabel/fonts/normal_font = ExtResource("1_8tr60")
+tombol_umum/base_type = &"Button"
+tombol_umum/fonts/font = ExtResource("1_8tr60")
+tombol_umum/styles/disabled = ExtResource("2_oelge")
+tombol_umum/styles/hover = ExtResource("3_1twip")
+tombol_umum/styles/normal = ExtResource("4_4j387")
+tombol_umum/styles/pressed = ExtResource("5_7wj3s")

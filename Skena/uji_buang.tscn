@@ -1,0 +1,173 @@
+[gd_scene load_steps=8 format=3 uid="uid://rgiyd0cdo1ir"]
+
+[ext_resource type="Script" path="res://Skrip/uji_buang.gd" id="1_qew8e"]
+[ext_resource type="Texture2D" uid="uid://b0ccovlupak32" path="res://Aset/Grafis/tile_0031.png" id="2_xts7x"]
+[ext_resource type="PackedScene" uid="uid://0w76sn2usrv2" path="res://Skena/UI/ui_deck.tscn" id="3_gj6ny"]
+[ext_resource type="Script" path="res://Skrip/UI/ui_panel_konfirmasi_discard.gd" id="4_1qj7j"]
+[ext_resource type="PackedScene" uid="uid://btm0w4g42nh4t" path="res://Skena/UI/ui_tombol.tscn" id="4_557bl"]
+[ext_resource type="Texture2D" uid="uid://bflails78fj64" path="res://Aset/Grafis/greySheet.png" id="4_vrn0g"]
+[ext_resource type="Theme" uid="uid://dksjdbgflxms0" path="res://Aset/tema_utama.tres" id="5_7ah8o"]
+
+[node name="Uji Buang" type="Node2D" node_paths=PackedStringArray("deck", "panel")]
+script = ExtResource("1_qew8e")
+deck = NodePath("Tata Isi/Marjin Isi/UI Deck")
+panel = NodePath("UI/Tata UI/Marjin Isi UI/VBoxContainer/Panel Konfirmasi")
+
+[node name="Tata Isi" type="Control" parent="." groups=["lapis_kartu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="Latar" type="TextureRect" parent="Tata Isi"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xts7x")
+stretch_mode = 1
+
+[node name="Desaturasi" type="ColorRect" parent="Tata Isi/Latar"]
+modulate = Color(0.282353, 0.635294, 0, 0.286275)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Marjin Isi" type="MarginContainer" parent="Tata Isi"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="UI Deck" parent="Tata Isi/Marjin Isi" instance=ExtResource("3_gj6ny")]
+layout_mode = 2
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Tata UI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Marjin Isi UI" type="MarginContainer" parent="UI/Tata UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tata UI/Marjin Isi UI"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel Konfirmasi" type="PanelContainer" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+size_flags_stretch_ratio = 7.88
+script = ExtResource("4_1qj7j")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer/Panel Konfirmasi"]
+layout_mode = 2
+texture = ExtResource("4_vrn0g")
+region_rect = Rect2(190, 98, 100, 100)
+patch_margin_left = 7
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer/Panel Konfirmasi"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer/Panel Konfirmasi/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Judul Panel" type="Label" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer/Panel Konfirmasi/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme = ExtResource("5_7ah8o")
+theme_override_font_sizes/font_size = 32
+text = "KONFIRMASI"
+horizontal_alignment = 1
+
+[node name="Keterangan" type="Label" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer/Panel Konfirmasi/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("5_7ah8o")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer/Panel Konfirmasi/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="MarginContainer" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer/Panel Konfirmasi/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="Tombol Discard" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer/Panel Konfirmasi/MarginContainer/VBoxContainer/HBoxContainer2/Label2" instance=ExtResource("4_557bl")]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+size_flags_horizontal = 1
+text = "DISCARD"
+
+[node name="Tombol Cabut" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer/Panel Konfirmasi/MarginContainer/VBoxContainer/HBoxContainer2/Label2" instance=ExtResource("4_557bl")]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+size_flags_horizontal = 1
+text = "CABUT"
+
+[node name="Batal" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer/Panel Konfirmasi/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("4_557bl")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BATAL"
+
+[node name="Tombol Kembali" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer" instance=ExtResource("4_557bl")]
+layout_mode = 2
+size_flags_vertical = 10
+text = "KEMBALI"
+
+[connection signal="button_up" from="UI/Tata UI/Marjin Isi UI/VBoxContainer/Panel Konfirmasi/MarginContainer/VBoxContainer/HBoxContainer2/Label2/Tombol Discard" to="." method="_on_tombol_discard_button_up"]
+[connection signal="button_up" from="UI/Tata UI/Marjin Isi UI/VBoxContainer/Panel Konfirmasi/MarginContainer/VBoxContainer/HBoxContainer2/Label2/Tombol Cabut" to="." method="_on_tombol_cabut_button_up"]
+[connection signal="button_up" from="UI/Tata UI/Marjin Isi UI/VBoxContainer/Panel Konfirmasi/MarginContainer/VBoxContainer/HBoxContainer2/Batal" to="." method="_on_batal_button_up"]
+[connection signal="button_up" from="UI/Tata UI/Marjin Isi UI/VBoxContainer/Tombol Kembali" to="." method="_on_tombol_kembali_button_up"]

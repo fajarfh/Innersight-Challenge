@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkqo7wjcp72kw"]
+
+[ext_resource type="Script" path="res://Skrip/skena_utama.gd" id="1_wv7kx"]
+[ext_resource type="Texture2D" uid="uid://b0ccovlupak32" path="res://Aset/Grafis/tile_0031.png" id="2_q20qe"]
+[ext_resource type="PackedScene" uid="uid://btm0w4g42nh4t" path="res://Skena/UI/ui_tombol.tscn" id="3_xxdk6"]
+
+[node name="SkenaUtama" type="Node2D"]
+script = ExtResource("1_wv7kx")
+
+[node name="Tata Isi" type="Control" parent="." groups=["lapis_kartu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="Latar" type="TextureRect" parent="Tata Isi"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_q20qe")
+stretch_mode = 1
+
+[node name="Desaturasi" type="ColorRect" parent="Tata Isi/Latar"]
+modulate = Color(0.282353, 0.635294, 0, 0.286275)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Marjin Isi" type="MarginContainer" parent="Tata Isi"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Tata UI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Marjin Isi UI" type="MarginContainer" parent="UI/Tata UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 130
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tata UI/Marjin Isi UI"]
+layout_mode = 2
+alignment = 1
+
+[node name="Challenge 1 Uji Deck" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer" instance=ExtResource("3_xxdk6")]
+layout_mode = 2
+text = "Challenge 1 Uji Deck"
+
+[node name="Challenge 2 Uji Toko" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer" instance=ExtResource("3_xxdk6")]
+layout_mode = 2
+text = "Challenge 2 Uji Toko"
+
+[node name="Challenge 3 Uji Discard" parent="UI/Tata UI/Marjin Isi UI/VBoxContainer" instance=ExtResource("3_xxdk6")]
+layout_mode = 2
+text = "Challenge 3 Uji Discard"
+
+[connection signal="button_up" from="UI/Tata UI/Marjin Isi UI/VBoxContainer/Challenge 1 Uji Deck" to="." method="_on_challenge_1_uji_deck_button_up"]
+[connection signal="button_up" from="UI/Tata UI/Marjin Isi UI/VBoxContainer/Challenge 2 Uji Toko" to="." method="_on_challenge_2_uji_toko_button_up"]
+[connection signal="button_up" from="UI/Tata UI/Marjin Isi UI/VBoxContainer/Challenge 3 Uji Discard" to="." method="_on_challenge_3_uji_discard_button_up"]

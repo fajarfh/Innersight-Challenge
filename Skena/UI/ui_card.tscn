@@ -1,0 +1,168 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6vvip46n4dww"]
+
+[ext_resource type="Script" path="res://Skrip/UI/ui_card.gd" id="1_bcer2"]
+[ext_resource type="Texture2D" uid="uid://b4jkgitoeiugu" path="res://Aset/Grafis/Resource Kartu/latar_A.tres" id="2_buw8h"]
+[ext_resource type="Theme" uid="uid://dksjdbgflxms0" path="res://Aset/tema_utama.tres" id="3_mumcl"]
+[ext_resource type="Script" path="res://Skrip/UI/card_state_machine.gd" id="4_ug8ld"]
+[ext_resource type="Script" path="res://Skrip/UI/Card State/card_status_dasar.gd" id="5_jm0qf"]
+[ext_resource type="Script" path="res://Skrip/UI/Card State/card_status_klik.gd" id="6_n7mpd"]
+[ext_resource type="Script" path="res://Skrip/UI/Card State/card_status_tahan.gd" id="7_4s6ot"]
+[ext_resource type="Script" path="res://Skrip/UI/Card State/card_status_lepas.gd" id="8_uwuo8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ummk"]
+size = Vector2(164, 234)
+
+[node name="UICard" type="Control" node_paths=PackedStringArray("label_status", "label_keterangan", "latar_kartu", "area_deteksi", "card_state_machine", "indikator_status", "indikator_discard")]
+custom_minimum_size = Vector2(164, 234)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 164.0
+offset_bottom = 234.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+script = ExtResource("1_bcer2")
+label_status = NodePath("Status Kartu")
+label_keterangan = NodePath("MarginContainer/Keterangan")
+latar_kartu = NodePath("Latar Kartu")
+path_latar_kartu = "res://Aset/Grafis/cardsLarge_tilemap.png"
+area_deteksi = NodePath("Area Deteksi")
+card_state_machine = NodePath("Card State Machine")
+indikator_status = NodePath("Indikator Status")
+indikator_discard = NodePath("Indikator Discard")
+
+[node name="Latar Kartu" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_buw8h")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Status Kartu" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("3_mumcl")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 18
+text = "DASAR"
+
+[node name="Area Deteksi" type="Area2D" parent="."]
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area Deteksi"]
+position = Vector2(82, 117)
+shape = SubResource("RectangleShape2D_5ummk")
+
+[node name="Indikator Status" type="ColorRect" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.298039)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Indikator Discard" type="ColorRect" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.788235)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label Discard" type="Label" parent="Indikator Discard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("3_mumcl")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 18
+text = "DISCARD"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="Keterangan" type="Label" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 1
+theme = ExtResource("3_mumcl")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="Card State Machine" type="Node" parent="." node_paths=PackedStringArray("status_awal")]
+script = ExtResource("4_ug8ld")
+status_awal = NodePath("CardStatusDasar")
+
+[node name="CardStatusDasar" type="Node" parent="Card State Machine"]
+script = ExtResource("5_jm0qf")
+
+[node name="CardStatusKlik" type="Node" parent="Card State Machine"]
+script = ExtResource("6_n7mpd")
+status = 1
+
+[node name="CardStatusTahan" type="Node" parent="Card State Machine"]
+script = ExtResource("7_4s6ot")
+status = 2
+
+[node name="CardStatusLepas" type="Node" parent="Card State Machine"]
+script = ExtResource("8_uwuo8")
+status = 3
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,266 @@
+[gd_scene load_steps=11 format=3 uid="uid://dnbs3d3ukis1n"]
+
+[ext_resource type="Texture2D" uid="uid://b0ccovlupak32" path="res://Aset/Grafis/tile_0031.png" id="1_6x3yl"]
+[ext_resource type="Script" path="res://Skrip/uji_toko.gd" id="1_66c2m"]
+[ext_resource type="PackedScene" uid="uid://0w76sn2usrv2" path="res://Skena/UI/ui_deck.tscn" id="2_dt0u7"]
+[ext_resource type="PackedScene" uid="uid://btm0w4g42nh4t" path="res://Skena/UI/ui_tombol.tscn" id="3_hdyvy"]
+[ext_resource type="Script" path="res://Skrip/UI/ui_panel_konfirmasi.gd" id="4_g0s48"]
+[ext_resource type="Texture2D" uid="uid://dtn284ltyp0f" path="res://Aset/Grafis/yellowSheet.png" id="5_g6r0k"]
+[ext_resource type="Texture2D" uid="uid://bflails78fj64" path="res://Aset/Grafis/greySheet.png" id="5_yrhtc"]
+[ext_resource type="Texture2D" uid="uid://b4jkgitoeiugu" path="res://Aset/Grafis/Resource Kartu/latar_A.tres" id="6_7a75v"]
+[ext_resource type="Theme" uid="uid://dksjdbgflxms0" path="res://Aset/tema_utama.tres" id="6_r04nj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vda7g"]
+atlas = ExtResource("5_g6r0k")
+region = Rect2(386, 210, 36, 36)
+
+[node name="Uji Toko" type="Node2D" node_paths=PackedStringArray("deck_beli", "deck_jual", "panel_konfirmasi", "label_koin")]
+script = ExtResource("1_66c2m")
+deck_beli = NodePath("Tata Isi/Marjin Isi/VBoxContainer/Deck Beli")
+deck_jual = NodePath("Tata Isi/Marjin Isi/VBoxContainer/Deck Jual")
+panel_konfirmasi = NodePath("UI/Tata UI/Marjin Isi UI/Panel Konfirmasi")
+label_koin = NodePath("UI/Tata UI/Marjin Isi UI/HBoxContainer/Label Koin")
+
+[node name="Tata Isi" type="Control" parent="." groups=["lapis_kartu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="Latar" type="TextureRect" parent="Tata Isi"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6x3yl")
+stretch_mode = 1
+
+[node name="Desaturasi" type="ColorRect" parent="Tata Isi/Latar"]
+modulate = Color(0.282353, 0.635294, 0, 0.286275)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Marjin Isi" type="MarginContainer" parent="Tata Isi"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tata Isi/Marjin Isi"]
+layout_mode = 2
+alignment = 1
+
+[node name="Deck Beli" parent="Tata Isi/Marjin Isi/VBoxContainer" instance=ExtResource("2_dt0u7")]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Deck Jual" parent="Tata Isi/Marjin Isi/VBoxContainer" instance=ExtResource("2_dt0u7")]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Tata UI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Marjin Isi UI" type="MarginContainer" parent="UI/Tata UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 130
+
+[node name="Panel Konfirmasi" type="PanelContainer" parent="UI/Tata UI/Marjin Isi UI"]
+visible = false
+custom_minimum_size = Vector2(600, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("4_g0s48")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi"]
+layout_mode = 2
+texture = ExtResource("5_yrhtc")
+region_rect = Rect2(190, 98, 100, 100)
+patch_margin_left = 7
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Pratinjau Kartu" type="TextureRect" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_7a75v")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Judul Panel" type="Label" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme = ExtResource("6_r04nj")
+theme_override_font_sizes/font_size = 32
+text = "KONFIRMASI PEMBELIAN"
+horizontal_alignment = 1
+
+[node name="Keterangan" type="Label" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("6_r04nj")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Harga" type="Label" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 6
+theme = ExtResource("6_r04nj")
+theme_override_font_sizes/font_size = 24
+text = "Harga JUAL:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Ikon Koin" type="TextureRect" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.25
+texture = SubResource("AtlasTexture_vda7g")
+stretch_mode = 4
+
+[node name="Nilai Harga" type="Label" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.75
+theme = ExtResource("6_r04nj")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="MarginContainer" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="Tombol Beli" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Label2" instance=ExtResource("3_hdyvy")]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+size_flags_horizontal = 1
+text = "BELI
+"
+
+[node name="Tombol Jual" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Label2" instance=ExtResource("3_hdyvy")]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+size_flags_horizontal = 1
+text = "JUAL
+"
+
+[node name="Batal" parent="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("3_hdyvy")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BATAL"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Tata UI/Marjin Isi UI"]
+custom_minimum_size = Vector2(150, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Ikon Koin" type="TextureRect" parent="UI/Tata UI/Marjin Isi UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_vda7g")
+stretch_mode = 4
+
+[node name="Label Koin" type="Label" parent="UI/Tata UI/Marjin Isi UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("6_r04nj")
+theme_override_colors/font_color = Color(1, 0.8, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 72
+text = "000
+"
+vertical_alignment = 1
+
+[node name="Tombol Kembali" parent="UI/Tata UI/Marjin Isi UI" instance=ExtResource("3_hdyvy")]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "KEMBALI"
+
+[connection signal="button_up" from="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Label2/Tombol Beli" to="." method="_on_tombol_beli_button_up"]
+[connection signal="button_up" from="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Label2/Tombol Jual" to="." method="_on_tombol_jual_button_up"]
+[connection signal="button_up" from="UI/Tata UI/Marjin Isi UI/Panel Konfirmasi/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Batal" to="." method="_on_batal_button_up"]
+[connection signal="button_up" from="UI/Tata UI/Marjin Isi UI/Tombol Kembali" to="." method="_on_tombol_kembali_button_up"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://btm0w4g42nh4t"]
+
+[ext_resource type="Theme" uid="uid://dksjdbgflxms0" path="res://Aset/tema_utama.tres" id="1_2bu2t"]
+
+[node name="TextureButton" type="Button"]
+custom_minimum_size = Vector2(300, 50)
+size_flags_horizontal = 4
+size_flags_vertical = 8
+focus_mode = 0
+theme = ExtResource("1_2bu2t")
+theme_type_variation = &"tombol_umum"

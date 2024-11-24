@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://eln5mgsta5ca"]
+
+[ext_resource type="Texture2D" uid="uid://bflails78fj64" path="res://Aset/Grafis/greySheet.png" id="1_wm3gv"]
+
+[resource]
+texture = ExtResource("1_wm3gv")
+texture_margin_left = 6.0
+texture_margin_top = 4.0
+texture_margin_right = 6.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(0, 331, 190, 49)
